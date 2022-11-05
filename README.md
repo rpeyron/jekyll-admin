@@ -1,3 +1,10 @@
+This repository is a fork with the followin features added:
+- header_buttons settings to add custom URLs as buttons in the header
+- force_show_drafts settings to force drafts when using multiple _config.yml or --drafts command line
+- new_meta_defaults settings to add meta on new drafts
+
+---
+
 [![Gem Version](https://img.shields.io/gem/v/jekyll-admin.svg)](https://rubygems.org/gems/jekyll-admin)
 [![Build Status](https://travis-ci.org/jekyll/jekyll-admin.svg?branch=master)](https://travis-ci.org/jekyll/jekyll-admin)
 [![Build status](https://ci.appveyor.com/api/projects/status/u6u9tn7rk5tln33s/branch/master?svg=true)](https://ci.appveyor.com/project/jekyll/jekyll-admin)
