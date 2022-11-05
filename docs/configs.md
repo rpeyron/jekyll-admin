@@ -65,3 +65,21 @@ It will only force display, not enable drafts. So be sure to have enabled drafts
 jekyll_admin:
   force_show_drafts: true
 ```
+#### `new_meta_defaults`
+
+Add default values for meta fields of new drafts or posts.
+
+This is useful to define some meta fields that you want not to forget to set on your pages, but that do not have a default value given in `defaults` section of `_config.yml`.
+
+```yaml
+jekyll_admin:
+  new_meta_defaults:
+    date: ''
+    image: ''
+    tags: []
+    categories: []
+    ...
+```
+
+
+
