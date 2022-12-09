@@ -82,4 +82,16 @@ jekyll_admin:
 ```
 
 
+#### `editors` and `default_editor`
+
+Specify the list of editors you want to have, and the default one. 
+
+```yaml
+jekyll_admin:
+  editors: [SimpleMDE, TinyMDE, TextArea, TUI_WW, TUI_SS, TUI_Tab]
+  default_editor: TinyMDE
+```
+
+
+
 
