@@ -19,4 +19,4 @@ node_modules
 /lib/jekyll-admin/public
 *.gem
 .DS_Store
-/vendor/bundle
+/vendor/
