@@ -110,3 +110,5 @@ jekyll_admin:
     image: ''
     tags: []
     categories: []
+  editors: []
+  default_editor: TinyMDE
