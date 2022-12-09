@@ -1,7 +1,9 @@
 This repository is a fork with the followin features added:
+- choice of other Markdown editors (TUI, TinyMDE, basic textarea or original SimpleMDE)
 - header_buttons settings to add custom URLs as buttons in the header
 - force_show_drafts settings to force drafts when using multiple _config.yml or --drafts command line
 - new_meta_defaults settings to add meta on new drafts
+- sort static files index by most recent files
 
 ---
 
