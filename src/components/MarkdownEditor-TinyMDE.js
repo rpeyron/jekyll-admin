@@ -85,7 +85,11 @@ class MarkdownEditor_TinyMDE extends Component {
     });
   }
 
-  destroy() {}
+  destroy() {
+    if (this.refs.mde_toolbar) this.refs.mde_toolbar.innerHTML = "";
+    if (this.refs.mde_editor) this.refs.mde_editor.innerHTML = "";
+    if (this.refs.mde_textarea) this.refs.mde_textarea.innerHTML = "";
+  }
 
   handleFilePick = path => {
     const url = `{{ '${path}' | relative_url }}`;
