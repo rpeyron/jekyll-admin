@@ -24,6 +24,7 @@ export default function MarkdownPageBody({
       <InputPath onChange={updatePath} type={type} path={path} />
       <InputTitle onChange={updateTitle} title={title} />
       <MarkdownEditor
+        path={path}
         onChange={updateBody}
         onSave={onSave}
         placeholder="Body"

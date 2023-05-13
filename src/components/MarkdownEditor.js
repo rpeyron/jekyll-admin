@@ -32,9 +32,16 @@ class MarkdownEditor extends Component {
 
     var config = props.config;
 
+    let restoreSavedValue =
+      localStorage.getItem('backup-' + props.path) != props.initialValue
+        ? localStorage.getItem('backup-' + props.path) ?? ''
+        : '';
+
     this.state = {
+      initialValue: props.initialValue,
       editor: config.content?.jekyll_admin?.default_editor ?? 'SimpleMDE',
       value: props.initialValue,
+      restoreSavedValue: restoreSavedValue,
     };
     this.editors = editors;
     if (
@@ -55,13 +62,16 @@ class MarkdownEditor extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
+    console.log('shouldComponentUpdate', nextProps, nextState);
     return (
       nextProps.initialValue !== this.props.initialValue ||
-      nextState.editor != this.state.editor
+      nextState.editor !== this.state.editor ||
+      nextState.restoreSavedValue !== this.state.restoreSavedValue
     );
   }
 
   componentDidUpdate() {
+    console.log('componentDidUpdate');
     this.destroy();
     this.create();
   }
@@ -75,6 +85,7 @@ class MarkdownEditor extends Component {
   destroy() {}
 
   onValueChange(text) {
+    localStorage.setItem('backup-' + this.props.path, text);
     this.setState({
       ...this.state,
       value: text,
@@ -92,6 +103,39 @@ class MarkdownEditor extends Component {
   render() {
     return (
       <div>
+        {this.state.restoreSavedValue !== '' && (
+          <div>
+            The last known value is different than the current one. Do you want
+            to{' '}
+            <a
+              onClick={() => {
+                this.setState({
+                  ...this.state,
+                  initialValue: this.state.restoreSavedValue,
+                  value: this.state.restoreSavedValue,
+                  restoreSavedValue: '',
+                });
+                console.log(
+                  'Restore',
+                  this.state.restoreSavedValue,
+                  this.state
+                );
+              }}
+            >
+              restore it
+            </a>{' '}
+            or{' '}
+            <a
+              onClick={() => {
+                this.setState({ ...this.state, restoreSavedValue: '' });
+                console.log('Ignore', this.state.restoreSavedValue, this.state);
+              }}
+            >
+              ignore it
+            </a>
+            ?
+          </div>
+        )}
         <div
           className={'markdown-editor-selector'}
           style={this.editors.length > 1 ? {} : { display: 'none' }}
@@ -128,6 +172,7 @@ class MarkdownEditor extends Component {
 }
 
 MarkdownEditor.propTypes = {
+  path: PropTypes.string,
   initialValue: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
