@@ -1,10 +1,11 @@
 This repository is a fork with the following features added:
 - real preview on the side (refreshed automatically if you activate live-reload)
 - choice of other Markdown editors (TUI, TinyMDE, basic textarea or original SimpleMDE) to benefit from spell checkers like LangageTool that do not work with SimpleMDE
-- header_buttons settings to add custom URLs as buttons in the header to have all your ressources to edit webpages at your fingertips
+- header_buttons settings to add custom URLs as buttons/menus in the header to have all your ressources to edit webpages at your fingertips
 - force_show_drafts settings to force drafts when using multiple _config.yml or --drafts command line
 - new_meta_defaults settings to add automatically predefined meta on new drafts (and avoid forgetting to set some of it)
 - sort static files index by most recent files
+- save in localStorage the last edited version to be able to restore it if you close by mistake the editor, or if the tab crashes for an unknown reason
 
 ![](./jekyll-admin-mods.jpg)
 
