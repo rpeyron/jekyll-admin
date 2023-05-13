@@ -64,3 +64,27 @@
 .multiple .btn {
   margin: 0 5px;
 }
+
+
+.btn-menu-header {
+  position: relative
+}
+
+.btn-menu-header .btn-menu-body {
+  display: none;
+  position: absolute;
+  top: calc(100%+20px);
+  left: 0px;
+  width: fit-content;
+  padding: 0;
+  margin: 0;
+}
+
+.btn-menu-header:hover .btn-menu-body {
+  display: block;
+}
+
+.btn-menu-header .btn-menu-body .btn {
+  width: 100%;
+  border-radius: 0px;
+}

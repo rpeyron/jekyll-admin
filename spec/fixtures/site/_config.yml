@@ -100,6 +100,14 @@ collections:
 jekyll_admin:
   homepage: "posts"
   header_buttons:
+    - title: Menu
+      icon: search
+      items: 
+        - title: Google
+          url: 'https://www.google.fr'
+          icon: search
+        - title: Bing
+          url: 'https://www.bing.com'
     - title: Google
       url: 'https://www.google.fr'
       icon: search

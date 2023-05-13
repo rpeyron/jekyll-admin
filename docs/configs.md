@@ -42,7 +42,8 @@ jekyll_admin:
 Add buttons in the header to open custom links. You may provide for each link:
 - `title`: the button label
 - `url`: the URL to be opened
-- `icon`: the fontawesome icon to be used (if none, the view icon will be used)
+- `icon`: (optional) the fontawesome icon to be used (if none, the view icon will be used)
+- `items`: (optional) items to be included in a drop down
 
 ```yaml
 jekyll_admin:
@@ -50,6 +51,15 @@ jekyll_admin:
    - title: Google
      url: 'https://www.google.com'
      icon: search
+   - title: Menu
+     icon: search
+     items: 
+      - title: Google
+        url: 'https://www.google.com'
+        icon: search
+      - title: Bing
+        url: 'https://www.bing.com'
+        icon: search
 ```
 
 
