@@ -74,8 +74,47 @@ class MarkdownEditor_TinyMDE extends Component {
           action: onSave,
           hotkey: 'Ctrl-S',
         },
+        '|',
+        {
+          name: 'Styles',
+          name: 'Styles',
+          innerHTML: `
+          <div class="menu-hover">
+           <div class="menu-title">Styles</div>
+           <div class="menu-contents" id="mde-styles">
+           </div>
+          </div>
+          `,
+          hotkey: 'Ctrl-<',
+        },
       ],
     });
+
+    var stylesEl = document.querySelector('#mde-styles');
+    if (stylesEl) {
+      let styles = this.props.config.content?.jekyll_admin?.styles;
+      if (styles) {
+        try {
+          Object.entries(styles).forEach(([key, value]) => {
+            var el = document.createElement('div');
+            el.innerHTML = key;
+            el.onclick = () => {
+              tinyMDE.wrapSelection('', '{: ' + value + '}');
+            };
+            stylesEl.appendChild(el);
+          });
+          stylesEl.parentElement.parentElement.querySelector(
+            '.menu-title'
+          ).onclick = () => {
+            tinyMDE.wrapSelection('', '{: }');
+          };
+        } catch (e) {}
+      } else {
+        stylesEl.parentElement.parentElement.querySelector(
+          '.menu-title'
+        ).style.display = 'none';
+      }
+    }
 
     this.editor = tinyMDE;
 
@@ -86,9 +125,9 @@ class MarkdownEditor_TinyMDE extends Component {
   }
 
   destroy() {
-    if (this.refs.mde_toolbar) this.refs.mde_toolbar.innerHTML = "";
-    if (this.refs.mde_editor) this.refs.mde_editor.innerHTML = "";
-    if (this.refs.mde_textarea) this.refs.mde_textarea.innerHTML = "";
+    if (this.refs.mde_toolbar) this.refs.mde_toolbar.innerHTML = '';
+    if (this.refs.mde_editor) this.refs.mde_editor.innerHTML = '';
+    if (this.refs.mde_textarea) this.refs.mde_textarea.innerHTML = '';
   }
 
   handleFilePick = path => {
@@ -124,6 +163,7 @@ MarkdownEditor_TinyMDE.propTypes = {
   initialValue: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
+  config: PropTypes.object.isRequired,
 };
 
 export default MarkdownEditor_TinyMDE;

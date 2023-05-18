@@ -26,3 +26,41 @@
   }
 
 }
+
+.tinymde div:has(.TMCommandBar) {
+  position: sticky;
+  top:0px;
+}
+
+
+.TMCommandBar {
+  overflow: visible;
+}
+
+.menu-hover {
+  position: relative;
+
+}
+
+.menu-hover .menu-contents {
+  display: none;
+}
+
+.menu-hover:hover .menu-contents {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background-color: #f8f8f8;
+  padding: 0.2em;
+  padding-right: 2em;
+}
+
+.menu-hover .menu-contents div {
+  width: 100%; 
+  white-space: nowrap;
+  font-size: 0.9em;
+}
+
+.menu-hover .menu-contents div:hover {
+  background-color: white;
+}
