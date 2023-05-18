@@ -127,5 +127,6 @@ jekyll_admin:
     shortcuts:
      'Link': '.mw80'
      'Two': '.mw80'
+  customFieldKeys: ['lang','lang-ref','lang-translations','toc']
  
  
