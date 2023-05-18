@@ -120,5 +120,7 @@ jekyll_admin:
     categories: []
   #editors: []
   default_editor: TinyMDE
+  styles:
+   'Image 80%': '.mw80'
  
  
