@@ -87,12 +87,24 @@ class MarkdownEditor_TinyMDE extends Component {
           `,
           hotkey: 'Ctrl-<',
         },
+        {
+          name: 'Shortcuts',
+          name: 'Shortcuts',
+          innerHTML: `
+          <div class="menu-hover">
+           <div class="menu-title">Shortcuts</div>
+           <div class="menu-contents" id="mde-shortcuts">
+           </div>
+          </div>
+          `,
+          hotkey: 'Ctrl->',
+        },
       ],
     });
 
     var stylesEl = document.querySelector('#mde-styles');
     if (stylesEl) {
-      let styles = this.props.config.content?.jekyll_admin?.styles;
+      let styles = this.props.config.content?.jekyll_admin?.commandbar?.styles;
       if (styles) {
         try {
           Object.entries(styles).forEach(([key, value]) => {
@@ -111,6 +123,28 @@ class MarkdownEditor_TinyMDE extends Component {
         } catch (e) {}
       } else {
         stylesEl.parentElement.parentElement.querySelector(
+          '.menu-title'
+        ).style.display = 'none';
+      }
+    }
+
+    var shortcutsEl = document.querySelector('#mde-shortcuts');
+    if (shortcutsEl) {
+      let shortcuts = this.props.config.content?.jekyll_admin?.commandbar
+        ?.shortcuts;
+      if (shortcuts) {
+        try {
+          Object.entries(shortcuts).forEach(([key, value]) => {
+            var el = document.createElement('div');
+            el.innerHTML = key;
+            el.onclick = () => {
+              tinyMDE.wrapSelection('', value);
+            };
+            shortcutsEl.appendChild(el);
+          });
+        } catch (e) {}
+      } else {
+        shortcutsEl.parentElement.parentElement.querySelector(
           '.menu-title'
         ).style.display = 'none';
       }
