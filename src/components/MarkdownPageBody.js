@@ -32,7 +32,11 @@ export default function MarkdownPageBody({
         config={config}
       />
       <Splitter />
-      <Metadata fields={metafields} staticFields={staticmetafields} />
+      <Metadata
+        fields={metafields}
+        staticFields={staticmetafields}
+        config={config}
+      />
     </div>
   );
 }

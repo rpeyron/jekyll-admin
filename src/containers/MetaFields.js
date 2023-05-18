@@ -45,6 +45,7 @@ export class MetaFields extends Component {
       dataview,
       site,
       staticFields,
+      config,
     } = this.props;
 
     let visibleKeys = { ...staticFields, ...metadata };
@@ -96,6 +97,7 @@ export class MetaFields extends Component {
           siteMeta={dataview ? null : site}
           isInDefaultState={defaultFieldsNotOverwritten.hasOwnProperty(key)}
           isDefaultField={staticFields && staticFields.hasOwnProperty(key)}
+          config={config}
         />
       );
     });
@@ -151,6 +153,7 @@ MetaFields.propTypes = {
   site: PropTypes.object,
   staticFields: PropTypes.object.isRequired,
   enableField: PropTypes.func.isRequired,
+  config: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = state => ({

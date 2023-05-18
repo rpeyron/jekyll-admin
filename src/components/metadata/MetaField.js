@@ -47,6 +47,7 @@ export class MetaField extends Component {
       siteMeta,
       isInDefaultState,
       isDefaultField,
+      config,
     } = this.props;
 
     const FieldTypes = {
@@ -64,9 +65,23 @@ export class MetaField extends Component {
             defaultValue={fieldKey}
             className="field key-field"
             type="text"
+            list="key-field-list"
             placeholder="Key"
             disabled={isInDefaultState}
           />
+          <datalist id="key-field-list">
+            <option value="date" />
+            <option value="image" />
+            <option value="file" />
+            <option value="layout" />
+            <option value="published" />
+            <option value="category" />
+            <option value="tags" />
+            <option value="published" />
+            {(config?.content?.jekyll_admin?.customFieldKeys ?? []).map(k => (
+              <option value={k} />
+            ))}
+          </datalist>
           <MetaButtons
             currentType={type}
             isDefaultField={isDefaultField}
@@ -114,6 +129,7 @@ MetaField.propTypes = {
   siteMeta: PropTypes.object,
   isInDefaultState: PropTypes.bool,
   isDefaultField: PropTypes.bool,
+  config: PropTypes.object.isRequired,
 };
 
 export default MetaField;
