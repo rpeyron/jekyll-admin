@@ -37,6 +37,11 @@
   overflow: visible;
 }
 
+.TMCommandButton:has(.menu-hover) {
+  width: auto;
+  font-size: 1em;
+}
+
 .menu-hover {
   position: relative;
 
