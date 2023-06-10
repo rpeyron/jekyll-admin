@@ -18,6 +18,27 @@ require "addressable/uri"
 require "sinatra/reloader"
 require "sinatra/namespace"
 
+class StdOutTee < StringIO 
+  def initialize()
+    super()
+    @log = + ""
+    @stdout = $stdout
+    $stdout = self
+    $stderr = self
+  end
+
+  def write(string)
+    @log << string
+    @stdout << string
+  end
+
+  def getLogs
+    @log
+  end
+
+end
+
+
 module JekyllAdmin
   autoload :APIable,      "jekyll-admin/apiable"
   autoload :DataFile,     "jekyll-admin/data_file"
@@ -36,6 +57,12 @@ module JekyllAdmin
       site
     end
   end
+
+  def self.logs
+    @logger.getLogs
+  end
+
+  @logger = StdOutTee.new()
 end
 
 [Jekyll::Page, Jekyll::Document, Jekyll::StaticFile, Jekyll::Collection].each do |klass|

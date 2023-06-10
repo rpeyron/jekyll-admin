@@ -113,6 +113,10 @@ jekyll_admin:
       icon: search
     - title: Bing
       url: 'https://www.bing.com'
+    - title: ''
+      api: action/shut-down
+      class: btn-round
+      icon: power-off      
   new_meta_defaults:
     date: ''
     image: ''

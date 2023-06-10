@@ -80,7 +80,7 @@ module JekyllAdmin
         }
         # get the directories inside the requested directory
         directory = JekyllAdmin::Directory.new(directory_path, **args)
-        directories = directory.directories
+        directories = directory.directories.sort_by(&:modified_time).reverse
         # merge directories with the documents at the same level
         directories.concat(directory_docs.sort_by(&:date).reverse)
       end

@@ -6,6 +6,8 @@ This repository is a fork with the following features added:
 - new_meta_defaults settings to add automatically predefined meta on new drafts (and avoid forgetting to set some of it)
 - sort static files index by most recent files
 - save in localStorage the last edited version to be able to restore it if you close by mistake the editor, or if the tab crashes for an unknown reason
+- sort collections folders according to last modified date (reverse)
+- added administration panel to view logs, shutdown serve, process site, etc.
 
 ![](./jekyll-admin-mods.jpg)
 

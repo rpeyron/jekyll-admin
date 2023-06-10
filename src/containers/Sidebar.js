@@ -86,6 +86,12 @@ export class Sidebar extends Component {
         translation: 'configuration',
         splitterBefore: true,
       },
+      administration: {
+        icon: 'terminal',
+        link: 'administration',
+        translation: 'administration',
+        splitterBefore: true,
+      },
     };
 
     const defaultLinks = _.keys(defaults);
@@ -109,7 +115,9 @@ export class Sidebar extends Component {
         <li key={index}>
           <Link activeClassName="active" to={`${ADMIN_PREFIX}/${current.link}`}>
             <Icon name={current.icon} />
-            {SidebarTranslations[current.translation]}
+            {SidebarTranslations[current.translation] ??
+              current.translation.charAt(0).toUpperCase() +
+                current.translation.slice(1).toLowerCase()}
           </Link>
         </li>
       );
