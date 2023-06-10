@@ -8,7 +8,7 @@ import Splitter from '../components/Splitter';
 import Icon from '../components/Icon';
 import Accordion from '../components/Accordion';
 import { fetchCollections } from '../ducks/collections';
-import { capitalize } from '../utils/helpers';
+import { capitalize, slugify } from '../utils/helpers';
 import _ from 'underscore';
 
 import translations from '../translations';
@@ -62,6 +62,7 @@ export class Sidebar extends Component {
 
   render() {
     const { config } = this.props;
+    console.log(config);
 
     const defaults = {
       pages: {
@@ -92,6 +93,21 @@ export class Sidebar extends Component {
         translation: 'administration',
         splitterBefore: true,
       },
+      ...Object.fromEntries(
+        (config.jekyll_admin?.sidebarFrames ?? []).map((frame, i) => {
+          let slug = slugify(frame.title ?? 'frame');
+          console.log(slug, frame, i);
+          return [
+            slug,
+            {
+              icon: frame.icon,
+              link: 'frames/' + slug,
+              translation: frame.title,
+              splitterBefore: i === 0,
+            },
+          ];
+        })
+      ),
     };
 
     const defaultLinks = _.keys(defaults);
@@ -104,6 +120,8 @@ export class Sidebar extends Component {
     }
 
     const visibleLinks = _.difference(defaultLinks, hiddenLinks);
+
+    console.log(visibleLinks, defaults);
 
     const links = [];
     _.each(visibleLinks, (link, index, list) => {

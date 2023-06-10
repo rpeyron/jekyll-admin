@@ -132,5 +132,9 @@ jekyll_admin:
      'Link': '.mw80'
      'Two': '.mw80'
   customFieldKeys: ['lang','lang-ref','lang-translations','toc']
+  sidebarFrames:
+    - url: "https://rpeyron.github.io/verres"
+      title: Verres
+      icon: fire
  
  

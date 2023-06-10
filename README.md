@@ -7,7 +7,8 @@ This repository is a fork with the following features added:
 - sort static files index by most recent files
 - save in localStorage the last edited version to be able to restore it if you close by mistake the editor, or if the tab crashes for an unknown reason
 - sort collections folders according to last modified date (reverse)
-- added administration panel to view logs, shutdown serve, process site, etc.
+- added administration panel to view logs, shutdown serve, process site, etc.  This allow handy headless operations.
+- added sidebar entries to view external contents in frames (if allowed by the corresponding website)
 
 ![](./jekyll-admin-mods.jpg)
 
