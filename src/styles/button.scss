@@ -18,6 +18,22 @@
   }
 }
 
+.btn.pending {
+  background-color: red;
+}
+
+.btn-round {
+  border-radius: 100%;
+  aspect-ratio: 1;
+  text-align: center;
+  padding: 0.1em;
+  width: 2em;
+
+  i {
+    margin: 0px;
+  }
+}
+
 .btn-fat {
   margin: 10px 0;
   width: 100%;

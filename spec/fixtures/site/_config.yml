@@ -113,6 +113,10 @@ jekyll_admin:
       icon: search
     - title: Bing
       url: 'https://www.bing.com'
+    - title: ''
+      api: action/shut-down
+      class: btn-round
+      icon: power-off      
   new_meta_defaults:
     date: ''
     image: ''
@@ -128,5 +132,9 @@ jekyll_admin:
      'Link': '.mw80'
      'Two': '.mw80'
   customFieldKeys: ['lang','lang-ref','lang-translations','toc']
+  sidebarFrames:
+    - url: "https://rpeyron.github.io/verres"
+      title: Verres
+      icon: fire
  
  

@@ -41,6 +41,8 @@ export class Header extends Component {
                           to={button.url}
                           icon={button.icon}
                           label={button.title ?? 'Click me'}
+                          class={button.class}
+                          api={button.api}
                         />
                       ))}
                     </span>
@@ -56,6 +58,8 @@ export class Header extends Component {
                     to={button.url}
                     icon={button.icon}
                     label={button.title ?? 'Click me'}
+                    className={button.class}
+                    api={button.api}
                   />
                 );
               }

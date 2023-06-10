@@ -8,7 +8,7 @@ import Splitter from '../components/Splitter';
 import Icon from '../components/Icon';
 import Accordion from '../components/Accordion';
 import { fetchCollections } from '../ducks/collections';
-import { capitalize } from '../utils/helpers';
+import { capitalize, slugify } from '../utils/helpers';
 import _ from 'underscore';
 
 import translations from '../translations';
@@ -62,6 +62,7 @@ export class Sidebar extends Component {
 
   render() {
     const { config } = this.props;
+    console.log(config);
 
     const defaults = {
       pages: {
@@ -86,6 +87,27 @@ export class Sidebar extends Component {
         translation: 'configuration',
         splitterBefore: true,
       },
+      administration: {
+        icon: 'terminal',
+        link: 'administration',
+        translation: 'administration',
+        splitterBefore: true,
+      },
+      ...Object.fromEntries(
+        (config.jekyll_admin?.sidebarFrames ?? []).map((frame, i) => {
+          let slug = slugify(frame.title ?? 'frame');
+          console.log(slug, frame, i);
+          return [
+            slug,
+            {
+              icon: frame.icon,
+              link: 'frames/' + slug,
+              translation: frame.title,
+              splitterBefore: i === 0,
+            },
+          ];
+        })
+      ),
     };
 
     const defaultLinks = _.keys(defaults);
@@ -99,6 +121,8 @@ export class Sidebar extends Component {
 
     const visibleLinks = _.difference(defaultLinks, hiddenLinks);
 
+    console.log(visibleLinks, defaults);
+
     const links = [];
     _.each(visibleLinks, (link, index, list) => {
       const current = defaults[link];
@@ -109,7 +133,9 @@ export class Sidebar extends Component {
         <li key={index}>
           <Link activeClassName="active" to={`${ADMIN_PREFIX}/${current.link}`}>
             <Icon name={current.icon} />
-            {SidebarTranslations[current.translation]}
+            {SidebarTranslations[current.translation] ??
+              current.translation.charAt(0).toUpperCase() +
+                current.translation.slice(1).toLowerCase()}
           </Link>
         </li>
       );

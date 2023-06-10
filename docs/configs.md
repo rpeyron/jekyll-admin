@@ -40,8 +40,9 @@ jekyll_admin:
 #### `header_buttons`
 
 Add buttons in the header to open custom links. You may provide for each link:
-- `title`: the button label
-- `url`: the URL to be opened
+- `title`: (optional) the button label
+- `url`: (optiona) the URL to be opened
+- `api`: (optional) the API call to make when clicked
 - `icon`: (optional) the fontawesome icon to be used (if none, the view icon will be used)
 - `items`: (optional) items to be included in a drop down
 
@@ -60,6 +61,27 @@ jekyll_admin:
       - title: Bing
         url: 'https://www.bing.com'
         icon: search
+```
+
+
+
+#### `sidebarFrames`
+
+Add entries on the sidebar to display framed contents. 
+
+Define an array with objects having the following properties:
+- `title`: the title displayed in the sidebar
+- `url`: the URL to be opened in the frame
+- `icon`: the fontawesome identifier of icon to display
+
+Note that many sites do not allow to be displayed in frames.
+
+```yaml
+jekyll_admin:
+  sidebarFrames:
+    - url: "https://rpeyron.github.io/verres"
+      title: Verres
+      icon: fire
 ```
 
 

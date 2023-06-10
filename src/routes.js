@@ -4,6 +4,8 @@ import { ADMIN_PREFIX } from './constants';
 
 import App from './containers/App';
 import Configuration from './containers/views/Configuration';
+import Administration from './containers/views/Administration';
+import Frame from './containers/views/Frame';
 import Pages from './containers/views/Pages';
 import PageEdit from './containers/views/PageEdit';
 import PageNew from './containers/views/PageNew';
@@ -24,6 +26,8 @@ export default (
   <Route path={`${ADMIN_PREFIX}`} component={App}>
     <IndexRoute component={Pages} />
     <Route path="configuration" component={Configuration} />
+    <Route path="administration" component={Administration} />
+    <Route path="frames(/**)" component={Frame} />
     <Route path="pages">
       <IndexRoute component={Pages} />
       <Route path="(**/)new" component={PageNew} />

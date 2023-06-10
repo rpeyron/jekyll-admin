@@ -2,7 +2,7 @@
 
 module JekyllAdmin
   class Server < Sinatra::Base
-    ROUTES = %w(collections configuration data drafts pages static_files).freeze
+    ROUTES = %w(collections configuration data drafts pages static_files action).freeze
     include JekyllAdmin::PathHelper
     include JekyllAdmin::FileHelper
 
