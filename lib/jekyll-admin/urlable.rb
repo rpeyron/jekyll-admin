@@ -9,10 +9,14 @@ module JekyllAdmin
       return if is_a?(Jekyll::Collection) || is_a?(JekyllAdmin::DataFile)
       return if is_a?(Jekyll::Document) && !collection.write?
 
-      @http_url ||= Addressable::URI.new(
-        :scheme => scheme, :host => host, :port => port,
-        :path => path_with_base(JekyllAdmin.site.config["baseurl"], url)
-      ).normalize.to_s
+      # @http_url ||= Addressable::URI.new(
+      #   :scheme => scheme, :host => host, :port => port,
+      #   :path => path_with_base(JekyllAdmin.site.config["baseurl"], url)
+      # ).normalize.to_s
+
+      # Force links relative to host (proxy support)
+      @http_url = path_with_base(JekyllAdmin.site.config["baseurl"], url)
+
     end
 
     # Absolute URL to the API representation of this resource
